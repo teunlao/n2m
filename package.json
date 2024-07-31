@@ -2,7 +2,6 @@
   "name": "@n2m/root",
   "version": "1.0.0",
   "dependencies": {
-    "happy-dom": "14.12.3",
     "@chakra-ui/cli": "next",
     "@chakra-ui/icons": "2.1.1",
     "@chakra-ui/react": "next",
@@ -25,6 +24,7 @@
     "fast-glob": "3.3.2",
     "fastify": "4.26.2",
     "glob": "10.3.12",
+    "happy-dom": "14.12.3",
     "history": "5.3.0",
     "hono": "^4.5.2",
     "nx": "18.2.2",
@@ -66,6 +66,7 @@
     "tsup": "8.0.1",
     "tsx": "4.7.0",
     "typescript": "5.5.3",
+    "vercel": "35.2.2",
     "vite": "5.3.4",
     "vite-bundle-visualizer": "1.0.1",
     "vite-svg-loader": "4.0.0",
@@ -125,7 +126,7 @@
     "blog:debug:mocks": "fkill :5554 && pnpm run packages:serve & pnpm -r --filter @n2m/blog-app run debug:mocks",
     "blog:theme": "pnpm -r --filter @n2m/blog-app run theme",
     "blog:theme:watch": "pnpm -r --filter @n2m/blog-app run theme:watch",
-    "payload:build": "pnpm -r --filter @n2m/payload run build:all",
-    "payload:start": "pnpm -r --filter @n2m/payload run payload:serve"
+    "payload:build": "pnpm -r --filter @n2m/payload run build",
+    "payload:start": "pnpm -r --filter @n2m/payload run serve"
   }
 }

@@ -1,21 +1,11 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "strict": false,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "outDir": "./dist",
-    "rootDir": "./",
     "jsx": "react",
-    "paths": {
-      "payload/generated-types": ["./src/payload-types.ts"]
-    }
+    "module": "commonjs",
+    "noEmit": false,
+    "outDir": "dist",
+    "rootDir": "./"
   },
-  "exclude": ["node_modules", "dist", "build", "payload-types.ts"],
-  "ts-node": {
-    "transpileOnly": true,
-    "swc": true
-  }
+  "extends": "./tsconfig.json",
+  "include": ["server.ts", "src/payload.config.ts"]
 }
