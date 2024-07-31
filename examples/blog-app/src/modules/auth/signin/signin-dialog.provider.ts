@@ -31,11 +31,17 @@ export const signinDialogProvider = defineProvider(() => {
   })
 
   const $signinError = createStore<JsonApiRequestError | null>(null)
-  $signinError.on(signinMutation.finished.failure, (_, error) => error.error)
+  // $signinError.on(signinMutation.finished.failure, (_, error) => error.error)
 
   sample({
     clock: form.validatedAndSubmitted,
     target: signinMutation.start,
+  })
+
+  sample({
+    clock: signinMutation.finished.failure,
+    filter: (val) => val.error.errorType === 'PREPARATION',
+    target: [toggleDialog.prepend(() => false), meQuery.start],
   })
 
   sample({

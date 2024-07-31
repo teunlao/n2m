@@ -13,8 +13,7 @@ const Comments: CollectionConfig = {
     update: ({ data, req: { user } }) => {
       return Boolean(
         checkRole(['admin'], user) ||
-          (data?.status === 'draft' &&
-            (typeof data?.user === 'string' ? data?.user : data?.user?.id) === user?.id),
+          (data?.status === 'draft' && (typeof data?.user === 'string' ? data?.user : data?.user?.id) === user?.id)
       )
     },
     // Only admins can delete comments
@@ -23,9 +22,7 @@ const Comments: CollectionConfig = {
   admin: {
     preview: (comment: Partial<Comment>) =>
       `${process.env.PAYLOAD_PUBLIC_SERVER_URL}/posts/${
-        comment?.doc && typeof comment?.doc === 'object'
-          ? comment?.doc?.slug
-          : (comment?.doc as string)
+        comment?.doc && typeof comment?.doc === 'object' ? comment?.doc?.slug : (comment?.doc as string)
       }`,
     useAsTitle: 'comment',
   },
