@@ -69,7 +69,7 @@ server.get(
 )
 
 if (import.meta.env.PROD) {
-  const port = Number(process.env.PORT) || 3000
+  const port = Number(process.env.PORT) || 5554
   serve(
     {
       port,
