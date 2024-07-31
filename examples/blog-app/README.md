@@ -1,5 +1,7 @@
 # Blog app example
 
+Deployed at https://n2m.onrender.com/
+
 ## Features
 - Typesafe router based on effector
 - HMR on the server and the client
