@@ -119,6 +119,7 @@
     "blog:build": "pnpm run blog:build:prod",
     "blog:build:start": "pnpm run blog:build && pnpm run blog:preview",
     "blog:start": "pnpm run blog:preview",
+    "blog:pm2:start": "pm2 start ecosystem.config.js --no-daemon",
     "blog:preview": "pnpm -r --filter @n2m/blog-app run start",
     "blog:start:pm2": "pnpm run blog:build:prod && pm2 kill && pm2 start deploy/blog/ecu.config.js --no-daemon",
     "blog:start:mocks": "pnpm run blog:build:stage && pnpm -r --filter @n2m/blog-app run start:mocks",
