@@ -5,10 +5,10 @@ import path from 'path'
 
 export const Media: CollectionConfig = {
   access: {
-    create: () => false,
-    delete: () => false,
+    create: () => true,
+    delete: () => true,
     read: () => true,
-    update: () => false,
+    update: () => true,
   },
   admin: {
     description: 'Creating, updating, and deleting media is disabled for this demo.',
@@ -29,9 +29,6 @@ export const Media: CollectionConfig = {
   ],
   slug: 'media',
   upload: {
-    staticDir:
-      process.env.NODE_ENV === 'production'
-        ? path.resolve(__dirname, '../../../dist/public/media')
-        : path.resolve(__dirname, '../../../public/media'),
+    staticDir: path.resolve(__dirname, '../../blog-app/public/media'),
   },
 }

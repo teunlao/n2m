@@ -87,7 +87,7 @@ export default buildConfig({
   },
   // database-adapter-config-start
   db: mongooseAdapter({
-    url: process.env.DATABASE_URI!,
+    url: process.env.DATABASE_URI,
   }),
   // database-adapter-config-end
   plugins: [

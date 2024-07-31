@@ -6,8 +6,8 @@
     "strict": false,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "outDir": "./payload_dist",
-    "rootDir": "./src/payload",
+    "outDir": "./dist",
+    "rootDir": "./src",
     "jsx": "react",
     "paths": {
       "payload/generated-types": ["./src/payload-types.ts"]

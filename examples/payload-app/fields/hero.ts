@@ -51,21 +51,19 @@ export const hero: Field = {
         ],
       }),
     }),
-    //
-    // linkGroup({
-    //   overrides: {
-    //     maxRows: 2,
-    //   },
-    // }),
+
+    linkGroup({
+      overrides: {
+        maxRows: 2,
+      },
+    }),
     {
       name: 'media',
+      admin: {
+        condition: (_, { type } = {}) => ['highImpact', 'mediumImpact'].includes(type),
+      },
       relationTo: 'media',
       required: true,
-      access: {
-        create: () => true,
-        update: () => true,
-        read: () => true,
-      },
       type: 'upload',
     },
   ],
