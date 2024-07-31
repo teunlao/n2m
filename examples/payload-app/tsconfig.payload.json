@@ -7,14 +7,13 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "outDir": "./dist",
-    "rootDir": "./src",
+    "rootDir": "./",
     "jsx": "react",
     "paths": {
       "payload/generated-types": ["./src/payload-types.ts"]
     }
   },
-  "include": ["src/payload"],
-  "exclude": ["node_modules", "dist", "build", "src/payload/payload-types.ts"],
+  "exclude": ["node_modules", "dist", "build", "payload-types.ts"],
   "ts-node": {
     "transpileOnly": true,
     "swc": true

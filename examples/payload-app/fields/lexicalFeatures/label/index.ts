@@ -10,7 +10,6 @@ import {
 import { $getSelection, $isRangeSelection } from 'lexical'
 
 import { $createLabelNode, $isLabelNode, LabelNode } from './nodes/LabelNode'
-import './index.scss'
 
 export const LabelFeature = (): FeatureProvider => {
   return {

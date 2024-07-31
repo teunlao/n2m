@@ -6,10 +6,10 @@
   "scripts": {
     "----------payload cms related scripts----------": "",
     "payload:dev": "cross-env PAYLOAD_CONFIG_PATH=payload.config.ts tsx --watch server.default.ts",
-    "build:payload": "cross-env PAYLOAD_CONFIG_PATH=src/payload/payload.config.ts payload build",
+    "build:payload": "cross-env PAYLOAD_CONFIG_PATH=payload.config.ts payload build",
     "build:server": "tsc --project tsconfig.payload.json",
     "build:all": "yarn copyfiles && yarn build:payload && yarn build:server",
-    "payload:serve": "cross-env PAYLOAD_CONFIG_PATH=payload_dist/payload.config.js NODE_ENV=production node payload_dist/server.default.js",
+    "payload:serve": "cross-env PAYLOAD_CONFIG_PATH=dist/payload.config.js NODE_ENV=production node dist/server.default.js",
     "copyfiles": "copyfiles -u 1 \"src/payload/**/*.{html,css,scss,ttf,woff,woff2,eot,svg,jpg,png}\" dist/",
     "generate:types": "cross-env PAYLOAD_CONFIG_PATH=src/payload/payload.config.ts payload generate:types",
     "generate:graphQLSchema": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload generate:graphQLSchema",
@@ -27,6 +27,7 @@
     "@types/express": "^4.17.21"
   },
   "dependencies": {
+    "typescript": "5.2.2",
     "copyfiles": "^2.4.1",
     "@neondatabase/serverless": "^0.9.4",
     "dotenv": "^16.4.5",

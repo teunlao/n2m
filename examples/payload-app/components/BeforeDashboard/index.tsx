@@ -2,8 +2,6 @@
 import { Banner, Check } from 'payload/components'
 import React from 'react'
 
-import './index.scss'
-
 const baseClass = 'before-dashboard'
 
 const BeforeDashboard: React.FC = () => {
