@@ -35,17 +35,23 @@ server.post('/api/users/logout', async (c) => {
 
 server.use('/api/*', logger(), proxyRequest)
 
+const cacheControlHeaders = (maxAge: string = '31536000') =>
+  createMiddleware(async (c, next) => {
+    c.header('Cache-Control', `public, max-age=${maxAge}`)
+    return await next()
+  })
+
 if (import.meta.env.PROD) {
   server
-    .use('/assets/*', compress(), serveStatic({ root: './dist/public' }))
-    .use('/favicon.ico', serveStatic({ path: './dist/public/favicon.ico' }))
+    .use('/assets/*', compress(), cacheControlHeaders(), serveStatic({ root: './dist/public' }))
+    .use('/favicon.ico', cacheControlHeaders(), serveStatic({ path: './dist/public/favicon.ico' }))
     .use('/manifest.json', serveStatic({ path: './dist/public/manifest.json' }))
-    .use('/media/*', compress(), serveStatic({ root: './public' }))
+    .use('/media/*', compress(), cacheControlHeaders(), serveStatic({ root: './public' }))
 } else {
   server
-    .use('/favicon.ico', serveStatic({ path: './public/favicon.ico' }))
+    .use('/favicon.ico', cacheControlHeaders(), serveStatic({ path: './public/favicon.ico' }))
     .use('/manifest.json', serveStatic({ path: './public/manifest.json' }))
-    .use('/media/*', serveStatic({ root: './public' }))
+    .use('/media/*', cacheControlHeaders(), serveStatic({ root: './public' }))
 }
 
 server.get(
