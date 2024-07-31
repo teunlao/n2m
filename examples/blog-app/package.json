@@ -18,7 +18,7 @@
     "build": "rimraf dist && pnpm run build.client && pnpm run build.server",
     "build.client": "NODE_ENV=production VITE_PRERENDER_SECRET=pass vite build --mode production",
     "build.server": "NODE_ENV=production VITE_PRERENDER_SECRET=pass vite build --ssr --mode production",
-    "start": "NODE_ENV=production PORT=6554 node --expose-gc --inspect dist/server.js",
+    "start": "NODE_ENV=production PORT=6554 node dist/server.js",
     "start:mocks": "NODE_ENV=production MOCKS_ENABLED=1 CUSTOM_MOCKED_PATHS=* PORT=5554 node --expose-gc --inspect dist/server.js",
     "typecheck": "tsc --noEmit"
   },
