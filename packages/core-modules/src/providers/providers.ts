@@ -59,9 +59,7 @@ export function injectTransientProvider<T extends (props: any) => any>(
   props?: Parameters<T>[0] & { sid: string }
 ): ReturnType<T> {
   const factory = useScopedContainer().resolve<T>(providerIdentifier)!
-
-  console.log('factory', factory)
-
+  
   // TODO maybe we should refactor it, and even remove
   return withEffectorFactory({
     sid: props?.sid ?? 'tp',

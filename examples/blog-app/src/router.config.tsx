@@ -6,6 +6,7 @@ import { SegmentContainerCached } from '@n2m/core-modules/react'
 import { ArticleSegmentToken, ArticlesSegmentToken } from './modules/articles/tokens.ts'
 import { LayoutSegmentToken } from './modules/layout/tokens.ts'
 import { metaConfig } from './meta.config.ts'
+import { useConfig } from '@n2m/core-config/shared'
 
 const MainLayout = ({ children }: React.PropsWithChildren) => (
   <SegmentContainerCached token={LayoutSegmentToken}>{children}</SegmentContainerCached>
@@ -33,15 +34,22 @@ export const renderProps = defineRouter({
               <Flex>
                 <Text mr={2}>App deployed at:</Text>
                 <Link href="https://n2m.onrender.com/">
-                  <Text color="gray.400">https://n2m.onrender.com</Text>
+                  <Text color="green.300">https://n2m.onrender.com</Text>
                 </Link>
               </Flex>
 
               <Flex>
                 <Text mr={2}>Payload CMS deployed at:</Text>
                 <Link href="https://n2m-payload.onrender.com/">
-                  <Text color="gray.400">https://n2m-payload.onrender.com</Text>
+                  <Text color="green.300">https://n2m-payload.onrender.com</Text>
                 </Link>
+              </Flex>
+
+              <Flex>
+                <Text mr={2}>Current commit hash: </Text>
+                <Text fontWeight={700} color="green.300">
+                  {useConfig().appVersion}
+                </Text>
               </Flex>
             </VStack>
           </Box>

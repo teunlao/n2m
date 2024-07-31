@@ -66,7 +66,6 @@
     "tsup": "8.0.1",
     "tsx": "4.7.0",
     "typescript": "5.5.3",
-    "vercel": "35.2.2",
     "vite": "5.3.4",
     "vite-bundle-visualizer": "1.0.1",
     "vite-svg-loader": "4.0.0",

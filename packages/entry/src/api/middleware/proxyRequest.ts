@@ -21,8 +21,6 @@ export const proxyRequest = async (c: Context) => {
     import.meta.env.VITE_PAYLOAD_URL ??
     `https://${c.req.raw.headers.get('host')}`
 
-  console.log('new baseURL', baseURL)
-
   // @ts-expect-error ignore
   const queryParams = new URLSearchParams(c.req.queries()).toString()
 
@@ -45,10 +43,6 @@ export const proxyRequest = async (c: Context) => {
       method: c.req.method,
     }
     if (c.req.method !== 'GET' && c.req.method !== 'HEAD') {
-      console.log('-----> NEW REQUEST ------->', c.req.url)
-      console.log('cookies', c.req.raw.headers.get('cookie'))
-      console.log('-----> END REQUEST ------->', c.req.url)
-
       let body = undefined
       const contentType = c.req.raw.headers.get('content-type') || c.req.raw.headers.get('Content-Type')
       if (contentType?.includes('application/json')) {

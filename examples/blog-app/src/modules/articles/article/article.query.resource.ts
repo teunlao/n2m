@@ -4,6 +4,7 @@ import { useClientHeaders } from '../../../hooks/use-client-headers.ts'
 import { zodContract } from '@farfetched/zod'
 import { z } from 'zod'
 import { buildRelativeUrl } from '@n2m/shared-hooks'
+// @ts-ignore
 import { Post } from '../../../../payload/payload-types.ts'
 import { META } from '../../../graphql/meta.ts'
 import { ARCHIVE_BLOCK, CALL_TO_ACTION, CONTENT, CONTENT_MEDIA, MEDIA_BLOCK } from '../../../graphql/blocks.ts'
@@ -37,8 +38,6 @@ const gql = `
 `
 
 export const articleQueryResource = defineTransientResource(() => {
-  console.log('articleQueryResource')
-
   const query = createJsonQuery({
     params: declareParams<{
       id: string

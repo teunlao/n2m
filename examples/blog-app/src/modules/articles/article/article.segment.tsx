@@ -5,7 +5,7 @@ import { ArticleProviderToken } from '../tokens.ts'
 import { injectProvider } from '@n2m/core-modules'
 import { useUnit } from 'effector-react'
 import React from 'react'
-import { Badge, Box, Container, Flex, Heading, HStack, Image, Link, Text, VStack } from '@chakra-ui/react'
+import { Badge, Box, Flex, Heading, HStack, Image, Link, Text, VStack } from '@chakra-ui/react'
 import { SegmentContainerCached } from '@n2m/core-modules/react'
 import { useConfig } from '@n2m/core-config/shared'
 import { CommentsSegmentToken } from '../../comments/tokens.ts'
@@ -146,7 +146,10 @@ export const ArticleSegment: React.FC<ArticleSegmentProps> = () => {
           <HStack gap={2} mb={6}>
             <Text fontSize="lg">By {post.populatedAuthors?.map((author: any) => author.name).join(',')}</Text>
             <Text fontSize="lg">•</Text>
-            <Text fontSize="lg"> {new Date(post!.publishedOn!).toDateString()}</Text>
+            <Text color="gray.400" fontSize="lg">
+              {' '}
+              {new Date(post!.publishedOn!).toDateString()}
+            </Text>
           </HStack>
           <Text fontSize="lg">{post!.meta!.description}</Text>
         </Box>
