@@ -1,23 +1,11 @@
 import { buildAbsoluteUrl, defineResource } from '@n2m/core-modules'
-import { createJsonQuery } from '@farfetched/core'
+import { createJsonMutation, createJsonQuery } from '@farfetched/core'
 import { zodContract } from '@farfetched/zod'
 import { z } from 'zod'
 import { useClientHeaders } from '../../hooks/use-client-headers.ts'
 import { buildPayloadUrl } from '../../helpers/build-payload-url.ts'
 
-const contract = z.object({
-  collection: z.string().optional(),
-  exp: z.number().optional(),
-  token: z.string().optional(),
-  user: z
-    .object({
-      id: z.string().optional(),
-      email: z.string().optional(),
-      name: z.string().optional(),
-      updatedAt: z.string().optional(),
-    })
-    .optional(),
-})
+const contract = z.any()
 
 const gql = `query Me {
   meUser {
@@ -35,19 +23,28 @@ const gql = `query Me {
 export type MeQueryResourceContract = z.infer<typeof contract>
 
 export const meQueryResource = defineResource(() => {
-  return createJsonQuery({
+  const mutation = createJsonQuery({
     name: 'meQuery',
     request: {
       headers: useClientHeaders(),
-      method: 'GET',
-      url: buildAbsoluteUrl('/api/users/me'),
+      method: 'POST',
+      url: buildAbsoluteUrl('/api/graphql'),
       credentials: 'include',
+      body: () => ({
+        query: gql,
+      }),
     },
     response: {
       contract: zodContract(contract),
-      mapData: (data) => data,
+      mapData: (data) => data.result.data.meUser,
     },
   })
+
+  mutation.finished.failure.watch((error) => {
+    console.error('Me query failed', error)
+  })
+
+  return mutation
 })
 
 export type MeQueryResource = ReturnType<typeof meQueryResource>

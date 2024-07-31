@@ -6,6 +6,9 @@ import { createEvent, createStore, sample } from 'effector'
 import { injectDependency } from '@n2m/core-di'
 import { MeQueryResourceToken, SigninMutationResourceToken } from '../tokens.ts'
 import { JsonApiRequestError } from '@farfetched/core'
+import { createEffect } from 'effector/compat'
+
+const reloadFx = createEffect(() => window.location.reload())
 
 export const signinDialogProvider = defineProvider(() => {
   const signinMutation = injectDependency(SigninMutationResourceToken)
@@ -46,7 +49,7 @@ export const signinDialogProvider = defineProvider(() => {
 
   sample({
     clock: signinMutation.finished.success,
-    target: [toggleDialog.prepend(() => false), meQuery.start],
+    target: [toggleDialog.prepend(() => false), meQuery.start, reloadFx],
   })
 
   return {

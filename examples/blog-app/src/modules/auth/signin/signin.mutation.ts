@@ -21,18 +21,31 @@ const gql = `
 `
 
 export const signinMutationResource = defineResource(() => {
-  return createJsonMutation({
+  const mutation = createJsonMutation({
     params: declareParams<{ email: string; password: string }>(),
     request: {
       method: 'POST',
-      url: buildAbsoluteUrl('/api/users/login'),
-      body: ({ email, password }) => ({ email, password }),
+      credentials: 'include',
+      url: buildAbsoluteUrl('/api/graphql'),
+      body: (params) => ({
+        query: gql,
+        variables: {
+          email: params.email,
+          password: params.password,
+        },
+      }),
     },
     response: {
       contract: zodContract(contract),
       status: { expected: [200, 204] },
     },
   })
+
+  mutation.finished.failure.watch((error) => {
+    console.error('Signin mutation failed', error)
+  })
+
+  return mutation
 })
 
 export type SigninMutationResource = ReturnType<typeof signinMutationResource>

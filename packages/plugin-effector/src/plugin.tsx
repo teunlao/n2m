@@ -62,7 +62,6 @@ export const effectorPlugin = () => {
           emitToDocumentBody: async () => {
             const storesValues = serialize(scope)
 
-            console.log('storesValues', storesValues)
             return `<script>window.__effectorStores = ${JSON.stringify(storesValues)}</script>`
           },
         },

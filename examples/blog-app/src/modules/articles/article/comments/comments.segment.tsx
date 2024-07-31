@@ -25,7 +25,7 @@ export const CommentsSegment = () => {
   const { createComment, isCreateCommentPending } = useProviderShape(CommentsProviderToken)
   const { data } = useResourceShape(MeQueryResourceToken)
   const articleId = useCurrentRoute().params.id
-  const userId = data?.result?.user?.id
+  const userId = data?.user?.id
 
   const { createCommentsApi } = injectProvider(CommentsProviderToken)
   const { commentText, commentTextChanged, comments, isCommentsLoading } = useUnit(createCommentsApi(articleId))

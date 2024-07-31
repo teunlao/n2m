@@ -45,6 +45,10 @@ export const proxyRequest = async (c: Context) => {
       method: c.req.method,
     }
     if (c.req.method !== 'GET' && c.req.method !== 'HEAD') {
+      console.log('-----> NEW REQUEST ------->', c.req.url)
+      console.log('cookies', c.req.raw.headers.get('cookie'))
+      console.log('-----> END REQUEST ------->', c.req.url)
+
       let body = undefined
       const contentType = c.req.raw.headers.get('content-type') || c.req.raw.headers.get('Content-Type')
       if (contentType?.includes('application/json')) {
@@ -95,6 +99,8 @@ export const proxyRequest = async (c: Context) => {
     if (import.meta.env.DEV) {
       // console.log('[proxy request] to: ', url.href)
     }
+
+    console.log('>>> >>> REQUEST >>> >>>', response.body)
 
     return new Response(response.body, {
       status: response.status,
