@@ -4,14 +4,14 @@ import { metaConfig } from './meta.config.ts'
 export const prerenderConfig: PrerenderConfig = [
   {
     path: '/',
-    csr: true,
-    ssg: true,
+    csr: false,
+    ssg: false,
     meta: metaConfig.index,
   },
   {
     path: '/articles',
-    csr: true,
-    ssg: true,
+    csr: false,
+    ssg: false,
     meta: metaConfig.articles,
   },
 ]
