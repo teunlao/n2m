@@ -49,10 +49,6 @@ export function createRequestConfig(c: Context) {
     .addOption('forwardUrl', {
       defaultValue: '' as unknown as URL,
       transform: (_, { backendUrl, requestUrl }): URL => {
-        if (rootConfig.stageMode) {
-          return requestUrl
-        }
-
         if (isProd) {
           return backendUrl
         }

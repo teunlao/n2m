@@ -74,6 +74,12 @@ export const proxyRequest = async (c: Context) => {
         } catch (e) {
           console.log(e)
         }
+      } else {
+        body = await c.req.json()
+        options = {
+          ...options,
+          body: JSON.stringify(body),
+        }
       }
     }
 
