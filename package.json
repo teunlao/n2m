@@ -114,15 +114,17 @@
     "blog:dev": "pnpm -r --filter @n2m/blog-app run dev",
     "blog:serve": "fkill :5554 && pnpm run packages:serve & pnpm run blog:dev",
     "blog:build-all": "pnpm run packages:build && pnpm -r --filter @n2m/blog-app run build",
-    "blog:build:stage": "VITE_STAGE=true pnpm run blog:build-all",
     "blog:build:prod": "VITE_ROBOTS_ENABLED=true pnpm run blog:build-all",
-    "blog:preview": "pnpm -r --filter @n2m/blog-app run start",
+    "blog:build": "pnpm run blog:build-all",
     "blog:start": "pnpm run blog:build:stage && pnpm run blog:preview",
+    "blog:preview": "pnpm -r --filter @n2m/blog-app run start",
     "blog:start:pm2": "pnpm run blog:build:prod && pm2 kill && pm2 start deploy/blog/ecu.config.js --no-daemon",
     "blog:start:mocks": "pnpm run blog:build:stage && pnpm -r --filter @n2m/blog-app run start:mocks",
     "blog:debug": "fkill :5554 && pnpm run packages:serve & pnpm -r --filter @n2m/blog-app run debug",
     "blog:debug:mocks": "fkill :5554 && pnpm run packages:serve & pnpm -r --filter @n2m/blog-app run debug:mocks",
     "blog:theme": "pnpm -r --filter @n2m/blog-app run theme",
-    "blog:theme:watch": "pnpm -r --filter @n2m/blog-app run theme:watch"
+    "blog:theme:watch": "pnpm -r --filter @n2m/blog-app run theme:watch",
+    "payload:build": "pnpm -r --filter @n2m/payload run build:all",
+    "payload:start": "pnpm -r --filter @n2m/payload run payload:serve"
   }
 }
