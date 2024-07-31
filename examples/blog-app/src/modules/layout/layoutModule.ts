@@ -5,7 +5,7 @@ import { layoutProvider } from './layout.provider.ts'
 
 export const MODULE_ID = 'articles' as const
 
-export const layoutModule = defineModule(() => ({
+export const LayoutModule = defineModule(() => ({
   id: MODULE_ID,
   segments: [
     {

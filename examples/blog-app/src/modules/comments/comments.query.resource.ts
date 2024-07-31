@@ -3,9 +3,10 @@ import { z } from 'zod'
 import { zodContract } from '@farfetched/zod'
 import { defineTransientResource } from '@n2m/core-modules'
 import { buildRelativeUrl } from '@n2m/shared-hooks'
-import { useClientHeaders } from '../../../../hooks/use-client-headers.ts'
-import { Comment } from '../../../../../payload/payload-types.ts'
-import { COMMENTS_BY_DOC } from '../../../../graphql/comments.ts'
+import { useClientHeaders } from '../../hooks/use-client-headers.ts'
+import { COMMENTS_BY_DOC } from '../../graphql/comments.ts'
+// @ts-ignore
+import { Comment } from '../../../../payload-app/src/payload-types.ts'
 
 const contract = z.object({
   data: z.object({

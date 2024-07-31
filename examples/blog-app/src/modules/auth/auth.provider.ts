@@ -12,13 +12,7 @@ export const authProvider = defineProvider(() => {
   const logoutClicked = createEvent()
 
   const $isAuthenticated = meQuery.$data.map((data) => !!data?.user, { skipVoid: false })
-  const $email = meQuery.$data.map(
-    (data) => {
-      console.log('data', data)
-      return data?.user?.email
-    },
-    { skipVoid: false }
-  )
+  const $email = meQuery.$data.map((data) => data?.user?.email, { skipVoid: false })
 
   sample({
     clock: ssrStarted,

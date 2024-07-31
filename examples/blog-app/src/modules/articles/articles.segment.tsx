@@ -4,10 +4,11 @@ import { injectDependency } from '@n2m/core-di'
 import { useGate } from 'effector-react'
 import { useResourceShape } from '@n2m/core-modules/react'
 import React from 'react'
-import { Post } from '../../../payload/payload-types.ts'
 import { RouterLink } from '@n2m/router/react'
 import { routes } from '../../router.config.tsx'
-import {useConfig} from "@n2m/core-config/shared";
+import { useConfig } from '@n2m/core-config/shared'
+// @ts-ignore
+import { Post } from '../../../../payload-app/src/payload-types.ts'
 
 export const PostHero: React.FC<{ post: Post }> = ({ post }) => {
   const { categories, meta: { description } = {}, populatedAuthors, publishedOn, title } = post

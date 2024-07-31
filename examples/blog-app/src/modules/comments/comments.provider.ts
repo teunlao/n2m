@@ -1,10 +1,10 @@
 import { defineProvider, injectResource, injectTransientResource, withDescription } from '@n2m/core-modules'
-import { CommentsQueryResourceToken, CreateCommentMutationToken } from '../../tokens.ts'
 import { useCoreEvents, useCurrentScope } from '@n2m/adapter-effector'
 import { createEffect, createEvent, createStore, sample, scopeBind } from 'effector'
-import { routes } from '../../../../router.config.tsx'
-import { defineCachedTransientApi } from '../../../../helpers/define-cached-transient-api.ts'
 import { type CreateCommentParams } from './create-comment.mutation.ts'
+import { CommentsQueryResourceToken, CreateCommentMutationToken } from './tokens.ts'
+import { defineCachedTransientApi } from '../../helpers/define-cached-transient-api.ts'
+import { routes } from '../../router.config.tsx'
 
 const createCommentsApi = defineCachedTransientApi((id: string) => {
   const commentTextChanged = createEvent<string>()

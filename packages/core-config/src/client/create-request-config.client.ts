@@ -1,11 +1,10 @@
 import { RequestConfig } from '../server'
 import { ConfigBuilder } from '../core/ConfigBuilder.ts'
 import { useCookies } from '@n2m/cookies'
-import { getLanguageFromString } from "@n2m/shared-utils";
+import { getLanguageFromString } from '@n2m/shared-utils'
 
 export function requestConfigFactory() {
-  const serverConfig = ConfigBuilder.parse(JSON.stringify(window.__STORE__?.config ?? '{}')) ?? {} as RequestConfig
-  console.log('serverConfig', serverConfig)
+  const serverConfig = ConfigBuilder.parse(JSON.stringify(window.__STORE__?.config ?? '{}')) ?? ({} as RequestConfig)
 
   const clientConfig = new ConfigBuilder()
     .addOption('isServer', { defaultValue: false })

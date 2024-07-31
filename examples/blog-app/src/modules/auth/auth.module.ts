@@ -14,7 +14,7 @@ import { logoutMutationResource } from './logout/logout.mutation.resource.ts'
 
 export const MODULE_ID = 'auth' as const
 
-export const authModule = defineModule(() => ({
+export const AuthModule = defineModule(() => ({
   id: MODULE_ID,
   providers: [
     {

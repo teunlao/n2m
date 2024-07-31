@@ -1,12 +1,14 @@
-import type { Comment, Post } from '../../../../payload/payload-types'
+// @ts-ignore
+import type { Comment, Post } from '../../../../../payload-app/src/payload-types.ts'
 import { useCurrentRoute } from '@n2m/router/react'
-import { ArticleProviderToken, CommentsSegmentToken } from '../tokens.ts'
+import { ArticleProviderToken } from '../tokens.ts'
 import { injectProvider } from '@n2m/core-modules'
 import { useUnit } from 'effector-react'
 import React from 'react'
 import { Badge, Box, Container, Flex, Heading, HStack, Image, Link, Text, VStack } from '@chakra-ui/react'
 import { SegmentContainerCached } from '@n2m/core-modules/react'
 import { useConfig } from '@n2m/core-config/shared'
+import { CommentsSegmentToken } from '../../comments/tokens.ts'
 
 export type ArticleSegmentProps = {
   comments: Comment[]

@@ -12,12 +12,12 @@ import {
   Textarea,
   VStack,
 } from '@chakra-ui/react'
-import { CommentsProviderToken } from '../../tokens.ts'
 import { injectProvider } from '@n2m/core-modules'
 import { useCurrentRoute } from '@n2m/router/react'
 import { useUnit } from 'effector-react'
 import { useProviderShape, useResourceShape } from '@n2m/core-modules/react'
-import { AuthProviderToken, MeQueryResourceToken, SigninDialogProviderToken } from '../../../auth/tokens.ts'
+import { CommentsProviderToken } from './tokens.ts'
+import { AuthProviderToken, MeQueryResourceToken, SigninDialogProviderToken } from '../auth/tokens.ts'
 
 export const CommentsSegment = () => {
   const { toggleDialog } = useProviderShape(SigninDialogProviderToken)

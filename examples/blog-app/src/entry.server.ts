@@ -39,13 +39,11 @@ if (import.meta.env.PROD) {
   server
     .use('/assets/*', compress(), serveStatic({ root: './dist/public' }))
     .use('/favicon.ico', serveStatic({ path: './dist/public/favicon.ico' }))
-    .use('/favicons/*', compress(), serveStatic({ root: './dist/public' }))
     .use('/manifest.json', serveStatic({ path: './dist/public/manifest.json' }))
     .use('/media/*', compress(), serveStatic({ root: './public' }))
 } else {
   server
     .use('/favicon.ico', serveStatic({ path: './public/favicon.ico' }))
-    .use('/favicons/*', serveStatic({ root: './public' }))
     .use('/manifest.json', serveStatic({ path: './public/manifest.json' }))
     .use('/media/*', serveStatic({ root: './public' }))
 }
