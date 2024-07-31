@@ -1,0 +1,17 @@
+{
+  "name": "@n2m/shared-hooks",
+  "type": "module",
+  "version": "0.0.1",
+  "main": "./src/index.ts",
+  "scripts": {
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@n2m/core-config": "workspace:*",
+    "@n2m/cookies": "workspace:*",
+    "@n2m/shared-utils": "workspace:*",
+    "@n2m/core-di": "workspace:*",
+    "@n2m/shared-tokens": "workspace:*",
+    "@n2m/core-renderer": "workspace:*"
+  }
+}

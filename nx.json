@@ -1,0 +1,45 @@
+{
+  "extends": "nx/presets/npm.json",
+  "affected": {
+    "defaultBase": "main"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "nx/tasks-runners/default",
+      "options": {
+        "parallel": 4,
+        "cacheableOperations": [
+          "build",
+          "typecheck",
+          "lint",
+          "format",
+          "build.client",
+          "build.server",
+          "test",
+          "docs:build"
+        ],
+        "exclude": ["packages/docs"]
+      }
+    }
+  },
+  "targetDefaults": {
+    "dev": {
+      "dependsOn": ["^build"]
+    },
+    "build": {
+      "cache": true,
+      "dependsOn": ["^build", "^test"],
+      "outputs": ["{projectRoot}/dist", "{projectRoot}/.next"]
+    },
+    "start": {
+      "dependsOn": ["build"]
+    },
+    "typecheck": {
+      "dependsOn": ["^build"]
+    },
+    "prepare": {
+      "cache": true,
+      "dependsOn": ["^build"]
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "@n2m/shared-types",
+  "sideEffects": false,
+  "version": "0.0.1",
+  "private": true,
+  "module": "./src/index.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "import": "./src/index.ts",
+      "default": "./src/index.ts"
+    }
+  },
+  "dependencies": {
+    "@unhead/schema": "1.9.9"
+  },
+  "type": "module"
+}

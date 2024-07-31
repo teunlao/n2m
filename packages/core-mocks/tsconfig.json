@@ -1,0 +1,29 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.d.ts",
+    "src/**/*.vue"
+  ],
+  "compilerOptions": {
+    "types": [
+      "@types/node"
+    ],
+    "outDir": "dist",
+    "rootDir": "src"
+  },
+  "references": [
+    {
+      "path": "../core-ssr-streaming/tsconfig.json"
+    },
+    {
+      "path": "../core-ssr-vite/tsconfig.json"
+    }
+  ],
+  "exclude": [
+    "**/node_modules",
+    "lib/**/*",
+    "dist/**/*"
+  ]
+}

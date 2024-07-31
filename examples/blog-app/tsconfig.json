@@ -1,0 +1,83 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.d.ts",
+    "src/**/*.vue"
+  ],
+  "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": "src"
+  },
+  "references": [
+    {
+      "path": "../../packages/forms/tsconfig.json"
+    },
+    {
+      "path": "../../packages/plugin-chakra/tsconfig.json"
+    },
+    {
+      "path": "../../packages/plugin-effector/tsconfig.json"
+    },
+    {
+      "path": "../../packages/shared-types/tsconfig.json"
+    },
+    {
+      "path": "../../packages/cookies/tsconfig.json"
+    },
+    {
+      "path": "../../packages/core-config/tsconfig.json"
+    },
+    {
+      "path": "../../packages/adapter-effector/tsconfig.json"
+    },
+    {
+      "path": "../../packages/shared-utils/tsconfig.json"
+    },
+    {
+      "path": "../../packages/core-prerender/tsconfig.json"
+    },
+    {
+      "path": "../../packages/router/tsconfig.json"
+    },
+    {
+      "path": "../../packages/core-modules/tsconfig.json"
+    },
+    {
+      "path": "../../packages/core-mocks/tsconfig.json"
+    },
+    {
+      "path": "../../packages/core-di/tsconfig.json"
+    },
+    {
+      "path": "../../packages/entry/tsconfig.json"
+    },
+    {
+      "path": "../../packages/core-renderer/tsconfig.json"
+    },
+    {
+      "path": "../../packages/shared-hooks/tsconfig.json"
+    },
+    {
+      "path": "../../packages/core-ssr-vite/tsconfig.json"
+    },
+    {
+      "path": "../../packages/plugin-gtag/tsconfig.json"
+    },
+    {
+      "path": "../../packages/plugin-device/tsconfig.json"
+    },
+    {
+      "path": "../../packages/plugin-unhead/tsconfig.json"
+    },
+    {
+      "path": "../../packages/shared-tokens/tsconfig.json"
+    }
+  ],
+  "exclude": [
+    "**/node_modules",
+    "lib/**/*",
+    "dist/**/*"
+  ]
+}

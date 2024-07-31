@@ -1,0 +1,60 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.d.ts",
+    "src/**/*.vue"
+  ],
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "outDir": "dist",
+    "rootDir": "src"
+  },
+  "references": [
+    {
+      "path": "../cache/tsconfig.json"
+    },
+    {
+      "path": "../core-prerender/tsconfig.json"
+    },
+    {
+      "path": "../core-mocks/tsconfig.json"
+    },
+    {
+      "path": "../core-di/tsconfig.json"
+    },
+    {
+      "path": "../cookies/tsconfig.json"
+    },
+    {
+      "path": "../router/tsconfig.json"
+    },
+    {
+      "path": "../adapter-effector/tsconfig.json"
+    },
+    {
+      "path": "../core-config/tsconfig.json"
+    },
+    {
+      "path": "../shared-hooks/tsconfig.json"
+    },
+    {
+      "path": "../core-modules/tsconfig.json"
+    },
+    {
+      "path": "../core-renderer/tsconfig.json"
+    },
+    {
+      "path": "../core-ssr-streaming/tsconfig.json"
+    },
+    {
+      "path": "../core-ssr-vite/tsconfig.json"
+    }
+  ],
+  "exclude": [
+    "**/node_modules",
+    "lib/**/*",
+    "dist/**/*"
+  ]
+}

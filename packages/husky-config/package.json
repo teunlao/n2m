@@ -1,0 +1,16 @@
+{
+  "name": "@n2m/husky-config",
+  "version": "0.1.0",
+  "main": "lintstagedrc.js",
+  "description": "Shared husky config for Frontend Platform",
+  "type": "commonjs",
+  "devDependencies": {
+    "husky": "8.0.3"
+  },
+  "lint-staged": {
+    "**/*.{js,ts,vue}": [
+      "npx prettier --write",
+      "npx eslint --fix"
+    ]
+  }
+}

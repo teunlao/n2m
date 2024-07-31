@@ -1,0 +1,40 @@
+{
+  "name": "@n2m/core-prerender",
+  "version": "0.0.1",
+  "private": true,
+  "sideEffects": false,
+  "type": "module",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "bun": "./src/index.ts",
+      "default": "./src/index.ts"
+    },
+    "./generator": {
+      "types": "./src/generator/index.ts",
+      "bun": "./src/generator/index.ts",
+      "node": "./dist/generator.js",
+      "default": "./dist/generator.js"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@unhead/schema": "1.9.9",
+    "@unhead/ssr": "1.9.9",
+    "unhead": "1.9.9",
+    "@n2m/cookies": "workspace:*",
+    "@n2m/shared-tokens": "workspace:*",
+    "@n2m/core-config": "workspace:*",
+    "@n2m/shared-types": "workspace:*",
+    "@n2m/core-di": "workspace:*",
+    "@n2m/shared-utils": "workspace:*"
+  }
+}

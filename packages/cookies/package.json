@@ -1,0 +1,37 @@
+{
+  "name": "@n2m/cookies",
+  "sideEffects": false,
+  "version": "0.0.1",
+  "private": true,
+  "types": "./src/index.ts",
+  "exports": {
+    ".": {
+      "bun": "./src/index.ts",
+      "node": "./src/index.ts",
+      "default": "./src/index.ts"
+    },
+    "./client": {
+      "types": "./src/client/index.ts",
+      "bun": "./src/client/index.ts",
+      "default": "./src/client/index.ts"
+    },
+    "./server": {
+      "types": "./src/server/index.ts",
+      "bun": "./src/server/index.ts",
+      "default": "./src/server/index.ts"
+    }
+  },
+  "dependencies": {
+    "@n2m/core-di": "workspace:*",
+    "@n2m/shared-tokens": "workspace:*",
+    "js-cookie": "3.0.5"
+  },
+  "devDependencies": {
+    "@types/js-cookie": "3.0.6"
+  },
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc"
+  }
+}

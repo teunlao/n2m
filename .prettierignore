@@ -1,0 +1,10 @@
+# Ignore artifacts:
+node_modules
+*.log*
+.nitro
+.cache
+.output
+.env
+dist
+.nx
+package.json

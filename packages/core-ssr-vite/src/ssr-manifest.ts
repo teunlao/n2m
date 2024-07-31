@@ -1,0 +1,235 @@
+import * as fs from 'fs'
+import * as path from 'path'
+import type { IndexHtmlTransformHook, ModuleNode, ViteDevServer } from 'vite'
+
+import type { Config } from './config.ts'
+import type { Asset, SSRManifest, ViteClientManifest } from './helpers/routes.ts'
+import {
+  assetsToHtml,
+  assetsToTags,
+  AssetType,
+  buildAssetUrl,
+  emptySSRManifest,
+  generateSSRManifest,
+  getAssetWeight,
+} from './helpers/routes.ts'
+import { findStylesInModuleGraph } from './helpers/vite.ts'
+
+type ManifestOpts = {
+  config: Config
+  viteServer?: ViteDevServer
+}
+
+export class Manifest {
+  private config: Config
+  private viteServer?: ViteDevServer
+
+  #clientManifest?: ViteClientManifest
+  readonly clientManifestName = 'manifest.json'
+
+  #ssrManifest?: SSRManifest
+  readonly ssrManifestName = 'ssr-manifest.json'
+
+  // id (asset path) => strified css module
+  readonly cssModules: Record<string, string> = {}
+
+  constructor(opts: ManifestOpts) {
+    this.config = opts.config
+    this.viteServer = opts.viteServer
+  }
+
+  public setViteServer(viteDevServer: ViteDevServer) {
+    this.viteServer = viteDevServer
+  }
+
+  public async getAssetsHtml(url: string) {
+    const assets = await this.getAssets(url)
+
+    return assetsToHtml(assets, {
+      isDev: this.config.isDev,
+      shouldModulePreload: this.config.shouldModulePreload,
+    })
+  }
+
+  public async getAssetsHtmlTags(url: string) {
+    const assets = await this.getAssets(url)
+
+    return assetsToTags(assets, {
+      isDev: this.config.isDev,
+      shouldModulePreload: this.config.shouldModulePreload,
+    })
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  public async getAssets(url: string) {
+    if (this.config.isDev) {
+      return this.#getAssetsDev(url)
+    }
+
+    throw new Error('not implemented')
+  }
+
+  get ssrManifest(): SSRManifest {
+    return this.#ssrManifest ?? { ...emptySSRManifest }
+  }
+
+  public async buildSSRManifest({ writeToDisk }: { writeToDisk?: boolean } = {}): Promise<SSRManifest> {
+    const viteServer = this.viteServer
+    if (!viteServer) {
+      throw new Error('Cannot call buildRoutesManifest() without a vite server')
+    }
+
+    const clientManifest = this.#loadClientManifest()
+    const ssrManifest = generateSSRManifest(clientManifest)
+
+    if (writeToDisk) {
+      fs.writeFileSync(this.#ssrManifestPath, JSON.stringify(ssrManifest, null, 2), 'utf-8')
+    }
+
+    this.#ssrManifest = ssrManifest
+
+    return ssrManifest
+  }
+
+  public async getVitePluginAssets(requestUrl = '/') {
+    const server = this.viteServer
+    if (!server) return []
+
+    const plugins = server.config.plugins.filter((plugin) => 'transformIndexHtml' in plugin)
+
+    const pluginAssets = []
+    for (const plugin of plugins) {
+      const hook = plugin.transformIndexHtml
+
+      const handler: IndexHtmlTransformHook =
+        typeof hook === 'function'
+          ? hook
+          : // @ts-expect-error ignore
+            hook.handler ?? hook.transform
+
+      const transformedHtml = await handler(``, { path: requestUrl, server, filename: 'index.html' })
+
+      if (!transformedHtml) continue
+
+      if (Array.isArray(transformedHtml)) {
+        // @ts-ignore
+        pluginAssets.push(...transformedHtml)
+      } else if (typeof transformedHtml === 'string') {
+        console.warn(`getVitePluginAssets() transformHtml string response not supported from plugin ${plugin.name}`)
+        continue
+      } else if (transformedHtml.tags) {
+        // @ts-ignore
+        pluginAssets.push(...(transformedHtml.tags ?? []))
+      }
+    }
+
+    return pluginAssets.map((asset: any, index) => {
+      return {
+        injectTo: asset.tag === 'script' ? 'body' : undefined,
+        ...asset,
+        attrs: {
+          ...asset.attrs,
+          key: `plugin-${index}`,
+        },
+      }
+    })
+  }
+
+  get clientManifestDir(): string {
+    return path.resolve(this.config.root, `${this.config.clientOutDir}/.vite`)
+  }
+
+  get clientManifestPath(): string {
+    return path.join(this.clientManifestDir, this.clientManifestName)
+  }
+
+  #loadClientManifest(): ViteClientManifest {
+    if (this.#clientManifest) return this.#clientManifest
+
+    if (!fs.existsSync(this.clientManifestPath)) {
+      throw new Error(
+        `Could not load client manifest at '${this.clientManifestPath}', did you forget to build the client first?`
+      )
+    }
+
+    this.#clientManifest = JSON.parse(fs.readFileSync(this.clientManifestPath, 'utf-8')) as ViteClientManifest
+
+    return this.#clientManifest
+  }
+
+  get #ssrManifestPath(): string {
+    return path.resolve(this.config.root, `${this.config.serverOutDir}/${this.ssrManifestName}`)
+  }
+
+  /**
+   * @TODO actually use these matches to scope down the assets in dev
+   */
+  async #getAssetsDev(url: string): Promise<Asset[]> {
+    const devServer = this.viteServer
+    if (!devServer) {
+      throw new Error('Cannot call getAssetsDev() without a vite server')
+    }
+
+    const assets: Asset[] = []
+
+    // push the vite dev entry
+    assets.push({
+      type: AssetType.script,
+      url: buildAssetUrl('/@vite/client', this.config.basePath),
+      weight: getAssetWeight('script.js'),
+    })
+
+    assets.push({
+      type: AssetType.script,
+      url: buildAssetUrl(this.config.clientEntry, this.config.basePath),
+      weight: getAssetWeight(this.config.clientEntry),
+    })
+
+    const styleAssets = await findStylesInModuleGraph({
+      vite: devServer,
+      match: [this.config.clientFile],
+      ssr: false,
+      cssModules: this.cssModules,
+    })
+    assets.push(...Object.values(styleAssets))
+
+    const collectAllModules = (rootModule: ModuleNode, visited = new Set<ModuleNode>()): ModuleNode[] => {
+      if (visited.has(rootModule)) {
+        return []
+      }
+
+      visited.add(rootModule)
+
+      let modules = [rootModule]
+
+      const list = Array.from(rootModule?.importedModules) ?? []
+
+      if (!list || list.length === 0) {
+        return [rootModule]
+      }
+
+      list.forEach((mod) => {
+        const collection = collectAllModules(mod, visited)
+
+        modules = [...modules, ...collection]
+      })
+
+      return modules
+    }
+
+    const modules = collectAllModules(
+      (await this.viteServer?.moduleGraph.getModuleByUrl(this.config.clientFile)) as ModuleNode
+    )
+    const vueModules = modules.filter((mod) => mod.id?.match(/vue&type=style/))
+
+    vueModules.forEach((mod) => {
+      assets.push({
+        type: AssetType.style,
+        url: mod.url,
+        weight: 1,
+      })
+    })
+
+    return assets
+  }
+}

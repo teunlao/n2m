@@ -1,0 +1,63 @@
+{
+  "name": "@n2m/core-renderer",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "files": [
+    "src"
+  ],
+  "exports": {
+    ".": {
+      "types": "./src/server/index.ts",
+      "bun": "./src/server/index.ts",
+      "node": "./src/server/index.ts",
+      "worker": "./src/server/index.ts",
+      "workerd": "./src/server/index.ts",
+      "deno": "./src/server/index.ts",
+      "edge": "./src/server/index.ts",
+      "default": "./src/client/index.ts"
+    },
+    "./client": {
+      "types": "./src/client/index.ts",
+      "bun": "./src/client/index.ts",
+      "default": "./src/client/index.ts"
+    },
+    "./server": {
+      "types": "./src/server/index.ts",
+      "bun": "./src/server/index.ts",
+      "default": "./src/server/index.ts"
+    },
+    "./assets": {
+      "types": "./src/server/assets.ts",
+      "bun": "./src/server/assets.ts",
+      "node": "./src/server/assets.ts",
+      "worker": "./src/server/assets.ts",
+      "workerd": "./src/server/assets.ts",
+      "deno": "./src/server/assets.ts",
+      "edge": "./src/server/assets.ts",
+      "default": "./src/client/assets.ts"
+    }
+  },
+  "scripts": {
+    "typecheck": "tsc",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@n2m/cookies": "workspace:*",
+    "@n2m/core-config": "workspace:*",
+    "@n2m/shared-types": "workspace:*",
+    "@n2m/core-modules": "workspace:*",
+    "@n2m/shared-tokens": "workspace:*",
+    "@n2m/core-di": "workspace:*",
+    "@n2m/core-ssr-streaming": "workspace:*",
+    "@n2m/core-ssr-vite": "workspace:*",
+    "deepmerge": "4.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "20.11.19",
+    "esbuild": "0.20.0",
+    "rollup": "4.9.6",
+    "rollup-plugin-esbuild": "6.1.1",
+    "type-fest": "4.10.2"
+  }
+}

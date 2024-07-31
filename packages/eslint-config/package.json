@@ -1,0 +1,22 @@
+{
+  "name": "@n2m/eslint-config",
+  "version": "0.1.0",
+  "main": "index.js",
+  "description": "Base ESLint config for Frontend Platform",
+  "files": [
+    "eslint-config.js",
+    "index.js",
+    "package.json"
+  ],
+  "type": "commonjs",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "7.15.0",
+    "eslint": "8.57.0",
+    "eslint-config-prettier": "9.1.0",
+    "eslint-define-config": "2.1.0",
+    "eslint-plugin-prettier": "5.1.3",
+    "eslint-plugin-react": "7.34.3",
+    "eslint-plugin-react-hooks": "4.6.2",
+    "eslint-plugin-vue": "9.27.0"
+  }
+}

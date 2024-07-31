@@ -1,0 +1,44 @@
+{
+  "name": "@n2m/forms",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "files": [
+    "src"
+  ],
+  "exports": {
+    ".": {
+      "types": "./src/core/lib/index.ts",
+      "bun": "./src/core/lib/index.ts",
+      "node": "./src/core/lib/index.ts",
+      "default": "./src/core/lib/index.ts"
+    },
+    "./react": {
+      "types": "./src/react/lib/index.ts",
+      "bun": "./src/react/lib/index.ts",
+      "node": "./src/react/lib/index.ts",
+      "default": "./src/react/lib/index.ts"
+    },
+    "./vue": {
+      "types": "./src/vue/lib/index.ts",
+      "bun": "./src/vue/lib/index.ts",
+      "node": "./src/vue/lib/index.ts",
+      "default": "./src/vue/lib/index.ts"
+    },
+    "./zod-adapter": {
+        "types": "./src/zod-adapter/lib/index.ts",
+        "bun": "./src/zod-adapter/lib/index.ts",
+        "node": "./src/zod-adapter/lib/index.ts",
+        "default": "./src/zod-adapter/lib/index.ts"
+    }
+  },
+  "scripts": {
+    "typecheck": "tsc",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@n2m/shared-hooks": "workspace:*",
+    "@n2m/shared-utils": "workspace:*",
+    "@n2m/core-di": "workspace:*"
+  }
+}

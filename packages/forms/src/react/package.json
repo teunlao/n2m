@@ -1,0 +1,45 @@
+{
+  "name": "@effector-reform/react",
+  "private": true,
+  "version": "0.0.1",
+  "description": "React bindings for effector composable forms",
+  "type": "module",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "test": "jest --env=jsdom"
+  },
+  "dependencies": {
+    "@effector-reform/core": "^0.8.2"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.24.3",
+    "@babel/preset-react": "^7.24.1",
+    "@babel/preset-typescript": "^7.24.1",
+    "@jest/globals": "^29.7.0",
+    "@testing-library/react": "^14.2.2",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/jest": "^29.5.12",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0"
+  },
+  "peerDependencies": {
+    "effector": "^23.2.0",
+    "effector-react": "^23.2.0"
+  },
+  "gitHead": "d35b5e5d94287cc6ba5b6568ef9e67c3a51312cc"
+}

@@ -1,0 +1,50 @@
+{
+  "name": "@n2m/core-ssr-vite",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "exports": {
+    "./types": "./src/types.ts",
+    "./plugin": {
+      "types": "./src/plugin-entry.ts",
+      "bun": "./src/plugin-entry.ts",
+      "import": "./dist/plugin-entry.js"
+    },
+    "./runtime": {
+      "types": "./src/runtime/index.ts",
+      "bun": "./src/runtime/index.ts",
+      "import": "./dist/runtime/index.js"
+    },
+    "./plugins": {
+      "default": "./dist/plugins/index.js",
+      "types": "./src/plugins/index.ts",
+      "bun": "./src/plugins/index.ts",
+      "import": "./dist/plugins/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "test.watch": "vitest watch --update",
+    "typecheck": "tsc",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@n2m/core-prerender": "workspace:*",
+    "@hono/node-server": "1.8.2",
+    "radix3": "1.1.0",
+    "ufo": "1.4.0"
+  },
+  "devDependencies": {
+    "@total-typescript/ts-reset": "0.5.1",
+    "esbuild": "0.20.0",
+    "rollup": "4.9.6",
+    "rollup-plugin-esbuild": "6.1.1",
+    "@unhead/schema": "1.9.9",
+    "@unhead/ssr": "1.9.9",
+    "unhead": "1.9.9"
+  }
+}

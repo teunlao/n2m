@@ -1,0 +1,18 @@
+User-agent: *
+
+Disallow: *?
+
+Allow: /*.svg
+
+Allow: /*.png
+
+Allow: /*.jpg
+
+Allow: /*.js
+
+Allow: /*.css
+
+
+User-agent: Yandex
+
+Disallow: *?

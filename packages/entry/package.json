@@ -1,0 +1,68 @@
+{
+  "name": "@n2m/entry",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "files": [
+    "src"
+  ],
+  "exports": {
+    ".": {
+      "types": "./src/server/index.ts",
+      "bun": "./src/server/index.ts",
+      "node": "./src/server/index.ts",
+      "default": "./src/client/index.ts"
+    },
+    "./client": {
+      "types": "./src/client/index.ts",
+      "bun": "./src/client/index.ts",
+      "default": "./src/client/index.ts"
+    },
+    "./server": {
+      "types": "./src/server/index.ts",
+      "bun": "./src/server/index.ts",
+      "default": "./src/server/index.ts"
+    },
+    "./shared": {
+      "types": "./src/shared/index.ts",
+      "bun": "./src/shared/index.ts",
+      "default": "./src/shared/index.ts"
+    },
+    "./api": {
+      "types": "./src/api/index.ts",
+      "bun": "./src/api/index.ts",
+      "default": "./src/api/index.ts"
+    },
+    "./resources": {
+      "types": "./src/resources/index.ts",
+      "bun": "./src/resources/index.ts",
+      "default": "./src/resources/index.ts"
+    }
+  },
+  "scripts": {
+    "typecheck": "tsc",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@n2m/cache": "workspace:*",
+    "@n2m/core-prerender": "workspace:*",
+    "@n2m/core-mocks": "workspace:*",
+    "@n2m/core-di": "workspace:*",
+    "@n2m/cookies": "workspace:*",
+    "@n2m/router": "workspace:*",
+    "@n2m/adapter-effector": "workspace:*",
+    "@n2m/core-config": "workspace:*",
+    "rollup-plugin-tsconfig-paths": "1.5.2",
+    "@n2m/shared-hooks": "workspace:*",
+    "@n2m/core-modules": "workspace:*",
+    "@n2m/core-renderer": "workspace:*",
+    "@n2m/core-ssr-streaming": "workspace:*",
+    "@n2m/core-ssr-vite": "workspace:*",
+    "isbot-fast": "1.2.0"
+  },
+  "devDependencies": {
+    "esbuild": "0.20.0",
+    "rollup": "4.9.6",
+    "rollup-plugin-esbuild": "6.1.1"
+  }
+}

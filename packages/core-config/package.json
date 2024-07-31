@@ -1,0 +1,40 @@
+{
+  "name": "@n2m/core-config",
+  "sideEffects": false,
+  "version": "0.0.1",
+  "private": true,
+  "exports": {
+    ".": {
+      "types": "./src/server/index.ts",
+      "bun": "./src/server/index.ts",
+      "node": "./src/server/index.ts",
+      "default": "./src/client/index.ts"
+    },
+    "./client": {
+      "types": "./src/client/index.ts",
+      "bun": "./src/client/index.ts",
+      "default": "./src/client/index.ts"
+    },
+    "./server": {
+      "types": "./src/server/index.ts",
+      "bun": "./src/server/index.ts",
+      "default": "./src/server/index.ts"
+    },
+    "./shared": {
+      "types": "./src/shared/index.ts",
+      "bun": "./src/shared/index.ts",
+      "default": "./src/shared/index.ts"
+    }
+  },
+  "dependencies": {
+    "@n2m/cache": "workspace:*",
+    "@n2m/cookies": "workspace:*",
+    "@n2m/shared-utils": "workspace:*",
+    "@n2m/core-di": "workspace:*",
+    "@n2m/shared-tokens": "workspace:*"
+  },
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc"
+  }
+}

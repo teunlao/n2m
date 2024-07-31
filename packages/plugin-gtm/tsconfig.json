@@ -1,0 +1,38 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.d.ts",
+    "src/**/*.vue"
+  ],
+  "compilerOptions": {
+    "typeRoots": [
+      "./src/global.d.ts"
+    ],
+    "types": [
+      "./src/global.d.ts"
+    ],
+    "outDir": "dist",
+    "rootDir": "src"
+  },
+  "references": [
+    {
+      "path": "../core-renderer/tsconfig.json"
+    },
+    {
+      "path": "../core-config/tsconfig.json"
+    },
+    {
+      "path": "../shared-hooks/tsconfig.json"
+    },
+    {
+      "path": "../plugin-unhead/tsconfig.json"
+    }
+  ],
+  "exclude": [
+    "**/node_modules",
+    "lib/**/*",
+    "dist/**/*"
+  ]
+}

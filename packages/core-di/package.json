@@ -1,0 +1,25 @@
+{
+  "name": "@n2m/core-di",
+  "sideEffects": false,
+  "version": "0.0.1",
+  "private": true,
+  "exports": {
+    ".": {
+      "types": "./src/server/index.ts",
+      "bun": "./src/server/index.ts",
+      "node": "./src/server/index.ts",
+      "default": "./src/client/index.ts"
+    },
+    "./next": {
+      "types": "./src/server/index.ts",
+      "bun": "./src/server/index.ts",
+      "node": "./src/server/index.ts",
+      "default": "./src/client/index.ts"
+    }
+  },
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc"
+  }
+}

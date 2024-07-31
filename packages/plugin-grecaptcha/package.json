@@ -1,0 +1,30 @@
+{
+  "name": "@n2m/plugin-grecaptcha",
+  "version": "0.0.1",
+  "private": true,
+  "sideEffects": false,
+  "type": "module",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "bun": "./src/index.ts",
+      "default": "./src/index.ts"
+    }
+  },
+  "scripts": {
+    "typecheck": "tsc",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@n2m/core-renderer": "workspace:*",
+    "@n2m/core-config": "workspace:*",
+    "@n2m/adapter-effector": "workspace:*",
+    "@n2m/router": "workspace:*",
+    "@n2m/core-di": "workspace:*",
+    "@n2m/shared-utils": "workspace:*"
+  }
+}

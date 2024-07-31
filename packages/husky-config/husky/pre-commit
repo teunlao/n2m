@@ -1,0 +1,18 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "🪝run pre-commit hook"
+
+if [ -f "$(git rev-parse --git-dir)/MERGE_HEAD" ]; then
+  echo "skip hook for merge commit"
+
+  exit 0
+else
+  echo "run lint-staged using @n2m/config-husky"
+
+  npx lint-staged -c @n2m/config-husky
+
+  echo "run tests using Vitest"
+
+  pnpm run test
+fi

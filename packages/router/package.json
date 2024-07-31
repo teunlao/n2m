@@ -1,0 +1,48 @@
+{
+  "name": "@n2m/router",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "files": [
+    "src"
+  ],
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "bun": "./src/index.ts",
+      "node": "./src/index.ts",
+      "default": "./src/index.ts"
+    },
+    "./react": {
+      "types": "./src/react/index.ts",
+      "bun": "./src/react/index.ts",
+      "node": "./src/react/index.ts",
+      "default": "./src/react/index.ts"
+    },
+    "./vue": {
+      "types": "./src/vue/index.ts",
+      "bun": "./src/vue/index.ts",
+      "node": "./src/vue/index.ts",
+      "default": "./src/vue/index.ts"
+    },
+    "./server": {
+      "types": "./src/server/index.ts",
+      "bun": "./src/server/index.ts",
+      "node": "./src/server/index.ts",
+      "default": "./src/server/index.ts"
+    }
+  },
+  "scripts": {
+    "typecheck": "tsc",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@n2m/shared-types": "workspace:*",
+    "@n2m/core-config": "workspace:*",
+    "@n2m/adapter-effector": "workspace:*",
+    "@n2m/shared-tokens": "workspace:*",
+    "@n2m/shared-hooks": "workspace:*",
+    "@n2m/shared-utils": "workspace:*",
+    "@n2m/core-di": "workspace:*"
+  }
+}
