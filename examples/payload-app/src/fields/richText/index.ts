@@ -11,14 +11,14 @@ type RichText = (
   overrides?: Partial<RichTextField>,
   additions?: {
     features?: FeatureProvider[]
-  },
+  }
 ) => RichTextField
 
 const richText: RichText = (
   overrides,
   additions = {
     features: [],
-  },
+  }
 ) =>
   deepMerge<RichTextField, Partial<RichTextField>>(
     {
@@ -80,7 +80,7 @@ const richText: RichText = (
       required: true,
       type: 'richText',
     },
-    overrides || {},
+    overrides || {}
   )
 
 export default richText

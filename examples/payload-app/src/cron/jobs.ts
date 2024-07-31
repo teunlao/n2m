@@ -10,7 +10,7 @@ const hitResetEndpoint = async () => {
   try {
     payload.logger.info(`Reset Demo DB key detected.`)
     const req = await fetch(
-      `${process.env.PAYLOAD_PUBLIC_SERVER_URL}/api/reset-db?key=${process.env.PAYLOAD_DEMO_RESET_KEY}`,
+      `${process.env.PAYLOAD_PUBLIC_SERVER_URL}/api/reset-db?key=${process.env.PAYLOAD_DEMO_RESET_KEY}`
     )
 
     if (req.ok) {

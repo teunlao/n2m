@@ -1,5 +1,5 @@
 import { defineProvider } from '@n2m/core-modules'
-import { createEffect, createEvent, sample } from 'effector'
+import { createEvent, sample } from 'effector'
 import { injectDependency } from '@n2m/core-di'
 import { LogoutMutationResourceToken, MeQueryResourceToken } from './tokens.ts'
 import { useCoreEvents } from '@n2m/adapter-effector'

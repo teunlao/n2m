@@ -23,14 +23,11 @@ export const Pages: CollectionConfig = {
   admin: {
     defaultColumns: ['title', 'slug', 'updatedAt'],
     livePreview: {
-      url: ({ data }) =>
-        `${process.env.PAYLOAD_PUBLIC_SERVER_URL}/${data.slug !== 'home' ? data.slug : ''}`,
+      url: ({ data }) => `${process.env.PAYLOAD_PUBLIC_SERVER_URL}/${data.slug !== 'home' ? data.slug : ''}`,
     },
     preview: (doc) => {
       return `${process.env.PAYLOAD_PUBLIC_SERVER_URL}/api/preview?url=${encodeURIComponent(
-        `${process.env.PAYLOAD_PUBLIC_SERVER_URL}/${
-          doc.slug !== 'home' ? (doc.slug as string) : ''
-        }`,
+        `${process.env.PAYLOAD_PUBLIC_SERVER_URL}/${doc.slug !== 'home' ? (doc.slug as string) : ''}`
       )}&secret=${process.env.PAYLOAD_PUBLIC_DRAFT_SECRET}`
     },
     useAsTitle: 'title',

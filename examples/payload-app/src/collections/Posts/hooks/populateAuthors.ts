@@ -13,8 +13,8 @@ export const populateAuthors: AfterReadHook = async ({ doc, req: { payload } }) 
             id: typeof author === 'object' ? author?.id : author,
             collection: 'users',
             depth: 0,
-          }),
-      ),
+          })
+      )
     )
 
     doc.populatedAuthors = authorDocs.map((authorDoc) => ({

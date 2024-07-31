@@ -1,11 +1,6 @@
 import type { AfterChangeHook } from 'payload/dist/collections/config/types'
 
-export const loginAfterCreate: AfterChangeHook = async ({
-  doc,
-  operation,
-  req,
-  req: { body = {}, payload, res },
-}) => {
+export const loginAfterCreate: AfterChangeHook = async ({ doc, operation, req, req: { body = {}, payload, res } }) => {
   if (operation === 'create' && !req.user) {
     const { email, password } = body
 

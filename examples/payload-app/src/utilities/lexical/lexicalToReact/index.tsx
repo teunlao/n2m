@@ -7,15 +7,7 @@ import type { SerializedElementNode, SerializedLexicalNode, SerializedTextNode }
 import escapeHTML from 'escape-html'
 import React, { Fragment } from 'react'
 
-import {
-  IS_BOLD,
-  IS_CODE,
-  IS_ITALIC,
-  IS_STRIKETHROUGH,
-  IS_SUBSCRIPT,
-  IS_SUPERSCRIPT,
-  IS_UNDERLINE,
-} from './nodeFormat'
+import { IS_BOLD, IS_CODE, IS_ITALIC, IS_STRIKETHROUGH, IS_SUBSCRIPT, IS_SUPERSCRIPT, IS_UNDERLINE } from './nodeFormat'
 
 interface Props {
   nodes: SerializedLexicalNode[]
@@ -27,9 +19,7 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
       {nodes?.map((_node, index): JSX.Element | null => {
         if (_node.type === 'text') {
           const node = _node as SerializedTextNode
-          let text = (
-            <span dangerouslySetInnerHTML={{ __html: escapeHTML(node.text) }} key={index} />
-          )
+          let text = <span dangerouslySetInnerHTML={{ __html: escapeHTML(node.text) }} key={index} />
           if (node.format & IS_BOLD) {
             text = <strong key={index}>{text}</strong>
           }
@@ -89,8 +79,7 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
           }
         }
 
-        const serializedChildren =
-          'children' in _node ? serializedChildrenFn(_node as SerializedElementNode) : ''
+        const serializedChildren = 'children' in _node ? serializedChildrenFn(_node as SerializedElementNode) : ''
 
         switch (_node.type) {
           case 'linebreak': {
@@ -125,9 +114,7 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
                 <li
                   aria-checked={node.checked ? 'true' : 'false'}
                   className={`component--list-item-checkbox ${
-                    node.checked
-                      ? 'component--list-item-checkbox-checked'
-                      : 'component--list-item-checked-unchecked'
+                    node.checked ? 'component--list-item-checkbox-checked' : 'component--list-item-checked-unchecked'
                   }`}
                   key={index}
                   // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
@@ -160,12 +147,7 @@ export function serializeLexical({ nodes }: Props): JSX.Element {
               const rel = fields.newTab ? 'noopener noreferrer' : undefined
 
               return (
-                <a
-                  href={fields.url}
-                  key={index}
-                  rel={rel}
-                  target={fields.newTab ? 'target="_blank"' : undefined}
-                >
+                <a href={fields.url} key={index} rel={rel} target={fields.newTab ? 'target="_blank"' : undefined}>
                   {serializedChildren}
                 </a>
               )

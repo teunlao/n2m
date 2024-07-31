@@ -24,7 +24,6 @@ export const resetDBEndpoint: Omit<Endpoint, 'root'> = {
   path: '/reset-db',
 }
 
-
 export const clearDBEndpoint: Omit<Endpoint, 'root'> = {
   handler: async (req, res) => {
     const key = req.query?.key

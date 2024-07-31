@@ -49,7 +49,7 @@ export const populateArchiveBlock: AfterReadHook = async ({ doc, req: { payload 
       }
 
       return block
-    }),
+    })
   )
 
   return {

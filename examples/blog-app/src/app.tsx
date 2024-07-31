@@ -8,7 +8,8 @@ import { system } from './theme/theme.ts'
 import { ArticlesModule } from './modules/articles/articles.module.ts'
 import { AuthModule } from './modules/auth/auth.module.ts'
 import { LayoutModule } from './modules/layout/layoutModule.ts'
-import {CommentsModules} from "./modules/comments/comments.modules.ts";
+import { CommentsModules } from './modules/comments/comments.modules.ts'
+import { CoordinatorModule } from './modules/coordinator/coordinator.module.ts'
 
 const { clientHandler, serverHandler } = createApp({
   renderProps,
@@ -30,14 +31,15 @@ const { clientHandler, serverHandler } = createApp({
     assetsPlugin(),
     unheadPlugin(),
     chakraPlugin({ system, defaultColorMode: 'dark' }),
-    effectorPlugin()
+    effectorPlugin(),
   ],
   // prettier-ignore
   modules: [
     AuthModule(),
     LayoutModule(),
     ArticlesModule(),
-    CommentsModules()
+    CommentsModules(),
+    CoordinatorModule()
   ],
 })
 

@@ -47,6 +47,5 @@ export const ArticlesModule = defineModule(() => ({
       token: ArticlesSegmentToken,
       component: ArticlesSegment,
     },
-    
   ],
 }))

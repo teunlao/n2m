@@ -94,7 +94,7 @@ export const buttonRecipe = defineRecipe({
         overflow: 'hidden',
         transition: 'all 0.25s ease',
         px: 0,
-        mx: 0
+        mx: 0,
       },
       solid: {
         position: 'relative',

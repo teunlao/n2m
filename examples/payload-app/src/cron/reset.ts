@@ -18,25 +18,11 @@ import { project2 } from '../seed/project-2'
 import { project3 } from '../seed/project-3'
 import { projectDesign, projectDesign2, projectDesign3 } from '../seed/project-design-images'
 import { projectEng, projectEng2, projectEng3, projectEng4 } from '../seed/project-eng-images'
-import {
-  projectSoftware,
-  projectSoftware2,
-  projectSoftware3,
-  projectSoftware4,
-} from '../seed/project-software-images'
+import { projectSoftware, projectSoftware2, projectSoftware3, projectSoftware4 } from '../seed/project-software-images'
 import { projectsPage } from '../seed/projects-page'
 import { adminEmail, adminPassword } from './shared'
 
-const collections = [
-  'categories',
-  'media',
-  'pages',
-  'posts',
-  'projects',
-  'comments',
-  'users',
-  'redirects',
-]
+const collections = ['categories', 'media', 'pages', 'posts', 'projects', 'comments', 'users', 'redirects']
 const globals = ['header', 'settings', 'footer']
 
 export async function seed(): Promise<void> {
@@ -276,51 +262,46 @@ export async function seedDB(): Promise<void> {
 
   payload.logger.info(`— Seeding categories...`)
 
-  const [
-    technologyCategory,
-    newsCategory,
-    financeCategory,
-    designCat,
-    softwareCat,
-    engineeringCat,
-  ] = await Promise.all([
-    await payload.create({
-      collection: 'categories',
-      data: {
-        title: 'Technology',
-      },
-    }),
-    await payload.create({
-      collection: 'categories',
-      data: {
-        title: 'News',
-      },
-    }),
-    await payload.create({
-      collection: 'categories',
-      data: {
-        title: 'Finance',
-      },
-    }),
-    await payload.create({
-      collection: 'categories',
-      data: {
-        title: 'Design',
-      },
-    }),
-    await payload.create({
-      collection: 'categories',
-      data: {
-        title: 'Software',
-      },
-    }),
-    await payload.create({
-      collection: 'categories',
-      data: {
-        title: 'Engineering',
-      },
-    }),
-  ])
+  const [technologyCategory, newsCategory, financeCategory, designCat, softwareCat, engineeringCat] = await Promise.all(
+    [
+      await payload.create({
+        collection: 'categories',
+        data: {
+          title: 'Technology',
+        },
+      }),
+      await payload.create({
+        collection: 'categories',
+        data: {
+          title: 'News',
+        },
+      }),
+      await payload.create({
+        collection: 'categories',
+        data: {
+          title: 'Finance',
+        },
+      }),
+      await payload.create({
+        collection: 'categories',
+        data: {
+          title: 'Design',
+        },
+      }),
+      await payload.create({
+        collection: 'categories',
+        data: {
+          title: 'Software',
+        },
+      }),
+      await payload.create({
+        collection: 'categories',
+        data: {
+          title: 'Engineering',
+        },
+      }),
+    ]
+  )
 
   payload.logger.info(`— Seeding posts...`)
 
@@ -334,7 +315,7 @@ export async function seedDB(): Promise<void> {
         .replace(/\{\{IMAGE-2\}\}/g, postTechAi1Doc.id)
         .replace(/\{\{IMAGE-3\}\}/g, postTechIot1Doc.id)
         .replace(/\{\{IMAGE-4\}\}/g, postTechQuant1Doc.id)
-        .replace(/\{\{AUTHOR\}\}/g, demoAuthorID),
+        .replace(/\{\{AUTHOR\}\}/g, demoAuthorID)
     ),
   })
 
@@ -345,7 +326,7 @@ export async function seedDB(): Promise<void> {
         .replace(/\{\{IMAGE-1\}\}/g, postImage2Doc.id)
         .replace(/\{\{IMAGE-2\}\}/g, postNewsHope2Doc.id)
         .replace(/\{\{IMAGE-3\}\}/g, postNewsDest2Doc.id)
-        .replace(/\{\{AUTHOR\}\}/g, demoAuthorID),
+        .replace(/\{\{AUTHOR\}\}/g, demoAuthorID)
     ),
   })
 
@@ -356,7 +337,7 @@ export async function seedDB(): Promise<void> {
         .replace(/\{\{IMAGE-1\}\}/g, postImage3Doc.id)
         .replace(/\{\{IMAGE-2\}\}/g, postFinanceStocks3Doc.id)
         .replace(/\{\{IMAGE-3\}\}/g, postFinanceBuildings3Doc.id)
-        .replace(/\{\{AUTHOR\}\}/g, demoAuthorID),
+        .replace(/\{\{AUTHOR\}\}/g, demoAuthorID)
     ),
   })
 
@@ -401,8 +382,8 @@ export async function seedDB(): Promise<void> {
             doc: post.id,
             user: demoUserID,
           },
-        }),
-    ),
+        })
+    )
   )
 
   payload.logger.info(`— Seeding projects...`)
@@ -416,7 +397,7 @@ export async function seedDB(): Promise<void> {
         .replace(/\{\{IMAGE\}\}/g, projectDesignDoc.id)
         .replace(/\{\{IMAGE-2\}\}/g, projectDesign2Doc.id)
         .replace(/\{\{IMAGE-3\}\}/g, projectDesign3Doc.id)
-        .replace(/\{\{IMAGE-SPHERE\}\}/g, imageSpheresDoc.id),
+        .replace(/\{\{IMAGE-SPHERE\}\}/g, imageSpheresDoc.id)
     ),
   })
 
@@ -427,7 +408,7 @@ export async function seedDB(): Promise<void> {
         .replace(/\{\{IMAGE-1\}\}/g, projectSoftwareDoc.id)
         .replace(/\{\{IMAGE-2\}\}/g, projectSoftware2Doc.id)
         .replace(/\{\{IMAGE-3\}\}/g, projectSoftware3Doc.id)
-        .replace(/\{\{IMAGE-4\}\}/g, projectSoftware4Doc.id),
+        .replace(/\{\{IMAGE-4\}\}/g, projectSoftware4Doc.id)
     ),
   })
 
@@ -438,7 +419,7 @@ export async function seedDB(): Promise<void> {
         .replace(/\{\{IMAGE-1\}\}/g, projectEngDoc.id)
         .replace(/\{\{IMAGE-2\}\}/g, projectEng2Doc.id)
         .replace(/\{\{IMAGE-3\}\}/g, projectEng3Doc.id)
-        .replace(/\{\{IMAGE-4\}\}/g, projectEng4Doc.id),
+        .replace(/\{\{IMAGE-4\}\}/g, projectEng4Doc.id)
     ),
   })
 
@@ -491,7 +472,7 @@ export async function seedDB(): Promise<void> {
         .replace(/\{\{IMAGE_1\}\}/g, image1Doc.id)
         .replace(/\{\{IMAGE_2\}\}/g, image2Doc.id)
         .replace(/\{\{POSTS_PAGE_ID\}\}/g, postsPageID)
-        .replace(/\{\{PROJECTS_PAGE_ID\}\}/g, projectsPageID),
+        .replace(/\{\{PROJECTS_PAGE_ID\}\}/g, projectsPageID)
     ),
   })
 

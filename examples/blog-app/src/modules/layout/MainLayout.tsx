@@ -1,4 +1,4 @@
-import { Avatar, Box, Button, Circle, Float, For, HStack, Link, Menu, Text } from '@chakra-ui/react'
+import { Avatar, Box, Button, Circle, Float, For, HStack, Link, Menu, Skeleton, Text } from '@chakra-ui/react'
 import { RouterLink, useCurrentRoute } from '@n2m/router/react'
 import { styled } from '@n2m/plugin-chakra'
 import React from 'react'
@@ -7,6 +7,8 @@ import { LayoutProviderToken } from './tokens.ts'
 import { useUnit } from 'effector-react'
 import { AuthProviderToken } from '../auth/tokens.ts'
 import { SigninDialogSegment } from '../auth/signin/signin-dialog.segment.tsx'
+import { buildPayloadUrl } from '../../helpers/build-payload-url.ts'
+import { Loader } from 'lucide-react'
 
 const StyledContainer = styled(Box, {
   display: 'grid',
@@ -67,8 +69,8 @@ export const MainLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
           </HStack>
           {/*http://localhost:3000/admin/collections/posts/create*/}
           <HStack>
-            <Link href="http://localhost:3000/admin/collections/posts/create" target="_blank">
-              <StyledButton variant="ghost">Add article</StyledButton>
+            <Link href={`${buildPayloadUrl('/admin/collections/posts/create')}`} target="_blank">
+              <StyledButton variant="ghost">Add Article</StyledButton>
             </Link>
             {!isAuthenticated ? (
               <SigninDialogSegment />

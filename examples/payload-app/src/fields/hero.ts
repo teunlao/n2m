@@ -1,11 +1,6 @@
 import type { Field } from 'payload/types'
 
-import {
-  HeadingFeature,
-  LinkFeature,
-  ParagraphFeature,
-  lexicalEditor,
-} from '@payloadcms/richtext-lexical'
+import { HeadingFeature, LinkFeature, ParagraphFeature, lexicalEditor } from '@payloadcms/richtext-lexical'
 
 import { LabelFeature } from './lexicalFeatures/label'
 import { LargeBodyFeature } from './lexicalFeatures/largeBody'

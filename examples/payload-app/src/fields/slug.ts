@@ -19,5 +19,5 @@ export const slugField: Slug = (fieldToUse = 'title', overrides = {}) =>
       label: 'Slug',
       type: 'text',
     },
-    overrides,
+    overrides
   )

@@ -5,7 +5,7 @@ import { ArticleProviderToken } from '../tokens.ts'
 import { injectProvider } from '@n2m/core-modules'
 import { useUnit } from 'effector-react'
 import React from 'react'
-import { Badge, Box, Flex, Heading, HStack, Image, Link, Text, VStack } from '@chakra-ui/react'
+import { Badge, Box, Flex, For, Heading, HStack, Image, Link, Skeleton, Text, VStack } from '@chakra-ui/react'
 import { SegmentContainerCached } from '@n2m/core-modules/react'
 import { useConfig } from '@n2m/core-config/shared'
 import { CommentsSegmentToken } from '../../comments/tokens.ts'
@@ -119,12 +119,23 @@ const ArticleBlocks: React.FC<{ post: any }> = ({ post }) => {
 
 export const ArticleSegment: React.FC<ArticleSegmentProps> = () => {
   const { params } = useCurrentRoute()
-  const { createArticleApi } = injectProvider(ArticleProviderToken)
-  const { articleQuery } = createArticleApi(params?.id)
+  const { useArticleApi } = injectProvider(ArticleProviderToken)
+  const { articleQuery } = useArticleApi(params?.id)
 
-  const { data: post } = useUnit(articleQuery)
+  const { data: post, pending } = useUnit(articleQuery)
 
-  if (!post) return null
+  if (!post && pending)
+    return (
+      <For each={Array.from({ length: 6 }) as never[]}>
+        {(_, idx) => (
+          <Box key={idx} py={2}>
+            <Skeleton height="2rem" mb={4} />
+            <Skeleton height="2rem" mb={4} />
+            <Skeleton height="2rem" mb={4} />
+          </Box>
+        )}
+      </For>
+    )
 
   const { categories } = post
 

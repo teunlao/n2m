@@ -1,16 +1,7 @@
 import type { SerializedListItemNode, SerializedListNode } from '@lexical/list'
 import type { SerializedHeadingNode } from '@lexical/rich-text'
-import type {
-  SerializedLinkNode,
-  SerializedRelationshipNode,
-  SerializedUploadNode,
-} from '@payloadcms/richtext-lexical'
-import type {
-  SerializedEditorState,
-  SerializedLexicalNode,
-  SerializedParagraphNode,
-  SerializedTextNode,
-} from 'lexical'
+import type { SerializedLinkNode, SerializedRelationshipNode, SerializedUploadNode } from '@payloadcms/richtext-lexical'
+import type { SerializedEditorState, SerializedLexicalNode, SerializedParagraphNode, SerializedTextNode } from 'lexical'
 
 import {
   IS_BOLD,
@@ -44,7 +35,7 @@ export function convertSlateToLexical(slateData: SlateNode[]): SerializedEditorS
 function convertSlateNodesToLexical(
   slateNodes: SlateNode[],
   canContainParagraphs: boolean,
-  parentNode: string,
+  parentNode: string
 ): SerializedLexicalNode[] {
   return (
     slateNodes.map((node) => {
