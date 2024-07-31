@@ -10,6 +10,7 @@
 
 
 ## Stack
+- package manager: `pnpm`
 - client framework: `React`
 - component library: `chakra-ui (v3 alpha)`
 - client routing: custom implementation`@n2m/@router`
@@ -21,6 +22,7 @@
 - data fetching: `farfetched` - effector based data fetching library
 - metatag management - custom wrapper over `unhead` `@n2m/plugin-unhead`
 
+---
 ## Job Test Assignment (31.06.2024)
 This example app is also used as a test assignment for me, the interview candidate.
 
