@@ -21,7 +21,7 @@ export const proxyRequest = async (c: Context) => {
     import.meta.env.VITE_PAYLOAD_URL ??
     `https://${c.req.raw.headers.get('host')}`
 
-  console.log('baseURL', baseURL)
+  console.log('new baseURL', baseURL)
 
   // @ts-expect-error ignore
   const queryParams = new URLSearchParams(c.req.queries()).toString()

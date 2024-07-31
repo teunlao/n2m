@@ -62,7 +62,7 @@ export const SigninDialogSegment = () => {
                     onChange={(e) => fields.password.onChange(e.target.value)}
                   />
                   {/*@ts-expect-error FIXME*/}
-                  <ErrorMessage>{$signinError?.response.errors[0]?.message}</ErrorMessage>
+                  <ErrorMessage>{$signinError?.response?.errors?.[0]?.message}</ErrorMessage>
                 </Field>
               </VStack>
             </chakra.form>
