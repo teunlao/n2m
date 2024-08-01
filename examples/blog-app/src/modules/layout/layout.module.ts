@@ -1,5 +1,5 @@
 import { defineModule, registerProvider } from '@n2m/core-modules'
-import { MainLayout } from './MainLayout.tsx'
+import { LayoutSegment } from './layout.segment.tsx'
 import { LayoutProviderToken, LayoutSegmentToken } from './tokens.ts'
 import { layoutProvider } from './layout.provider.ts'
 
@@ -10,7 +10,7 @@ export const LayoutModule = defineModule(() => ({
   segments: [
     {
       token: LayoutSegmentToken,
-      component: MainLayout,
+      component: LayoutSegment,
     },
   ],
   providers: [

@@ -7,7 +7,7 @@ import { chakraPlugin } from '@n2m/plugin-chakra'
 import { system } from './theme/theme.ts'
 import { ArticlesModule } from './modules/articles/articles.module.ts'
 import { AuthModule } from './modules/auth/auth.module.ts'
-import { LayoutModule } from './modules/layout/layoutModule.ts'
+import { LayoutModule } from './modules/layout/layout.module.ts'
 import { CommentsModules } from './modules/comments/comments.modules.ts'
 import { CoordinatorModule } from './modules/coordinator/coordinator.module.ts'
 

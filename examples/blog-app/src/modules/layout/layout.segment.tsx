@@ -1,4 +1,4 @@
-import { Avatar, Box, Button, Circle, Float, For, HStack, Link, Menu, Skeleton, Text } from '@chakra-ui/react'
+import { Avatar, Box, Button, Circle, Float, For, HStack, Link, Menu, Text } from '@chakra-ui/react'
 import { RouterLink, useCurrentRoute } from '@n2m/router/react'
 import { styled } from '@n2m/plugin-chakra'
 import React from 'react'
@@ -8,7 +8,6 @@ import { useUnit } from 'effector-react'
 import { AuthProviderToken } from '../auth/tokens.ts'
 import { SigninDialogSegment } from '../auth/signin/signin-dialog.segment.tsx'
 import { buildPayloadUrl } from '../../helpers/build-payload-url.ts'
-import { Loader } from 'lucide-react'
 
 const StyledContainer = styled(Box, {
   display: 'grid',
@@ -43,7 +42,7 @@ const StyledButton = styled(Button, {
   fontWeight: 700,
 })
 
-export const MainLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
+export const LayoutSegment: React.FC<React.PropsWithChildren> = ({ children }) => {
   const { navigation } = useProviderShape(LayoutProviderToken)
   const { email, isAuthenticated, logoutClicked } = useProviderShape(AuthProviderToken)
 
