@@ -33,19 +33,19 @@ This example app is also used as a test assignment for me, the interview candida
 Comments on the task:
 According to the assignment, it was necessary to use Next.js and implement the following key requirements:
 
-1. Server-Side Rendering - if we had used Next.js, the task would have been completed instantly, as SSR is built into Next.js out of the box; here, we are using a custom SSR server based on Vite and Hono.js.
+1. Server-Side Rendering - Here, we are using a custom SSR server based on Vite and Hono.js.
 
-2. Routing - Next.js already includes a file-based router out of the box; for this task, a custom router is used.
+2. Routing - custom router is used.
 
 3. API for Articles - PayloadCMS is used as recommended in the assignment.
 
-4. Comment Functionality - implemented based on PayloadCMS.
+4. Comment Functionality - implementation based on PayloadCMS.
 
 5. Styling - Using Chakra UI v3, an alpha version, for experimentation.
 
 6. Image Handling - since we are not using Next.js, we have to implement this ourselves:
    - image compression is handled on the server side using Hono.js
-   - .webp format - not implemented (TODO)
+   - .webp formatting - not implemented (TODO)
 7. SEO Optimization - for managing meta tags, we use our own implementation on top of unhead.js.
 
 8. Headless CMS - using PayloadCMS.
@@ -61,7 +61,7 @@ All of these commands are expecting you to be in the root of this repo
 pnpm install
 ```
 
-### build dependent packages
+### build dependent workspace packages
 ```bash
 pnpm run packages:build
 ```
@@ -75,3 +75,5 @@ pnpm run blog:dev
 ```bash
 pnpm run blog:build
 ```
+
+
