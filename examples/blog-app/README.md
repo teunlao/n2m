@@ -81,4 +81,5 @@ pnpm run blog:debug
 pnpm run blog:build
 ```
 
-
+### Architecture diagram
+![drawio.svg](drawio.svg)
