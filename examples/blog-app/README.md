@@ -66,9 +66,14 @@ pnpm install
 pnpm run packages:build
 ```
 
-### run example blog-app in development mode
+### run example in dev mode
 ```bash
 pnpm run blog:dev
+```
+
+#### run dev mode with debug
+```bash
+pnpm run blog:debug
 ```
 
 ### build

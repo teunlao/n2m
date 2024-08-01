@@ -40,5 +40,10 @@ pnpm refresh
 pnpm run blog:dev
 ```
 
+#### run with debug
+```bash
+pnpm run blog:debug
+```
+
 
 ## TODO
