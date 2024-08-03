@@ -1,5 +1,4 @@
 # 👋N2M
-GOODBYE NEXT, HELLO MESS :)
 
 # Introduction
 
